@@ -1,0 +1,350 @@
+/* VSCode inside XP Window — scoped, no body/background bleed */
+.vscode-xp {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  background: #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  color: #cccccc;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  user-select: text;
+}
+
+.vscode-xp * {
+  box-sizing: border-box;
+}
+
+/* internal title bar — we hide XP's extra chrome, keep VS Code's own mac dots */
+.vscode-xp .vscode-titlebar {
+  background: #2d2d2d;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+  border-bottom: 1px solid #1e1e1e;
+  user-select: none;
+}
+
+.vscode-xp .vscode-titlebar .vscode-dots {
+  display: flex;
+  gap: 8px;
+}
+
+.vscode-xp .vscode-titlebar .vscode-dots span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.vscode-xp .vscode-dots .red { background: #ff5f57; }
+.vscode-xp .vscode-dots .yellow { background: #ffbd2e; }
+.vscode-xp .vscode-dots .green { background: #28c840; }
+
+.vscode-xp .vscode-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #e5e5e5;
+  letter-spacing: 0.3px;
+}
+
+.vscode-xp .vscode-title i { color: #007acc; font-size: 13px; }
+.vscode-xp .vscode-title .repo { color: #8b8b8b; font-weight: 400; margin-left: 4px; font-size: 11px; }
+
+.vscode-xp .vscode-title-right {
+  display: flex;
+  gap: 12px;
+  color: #8b8b8b;
+  font-size: 11px;
+}
+
+.vscode-xp .main-layout {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+  min-height: 0;
+}
+
+/* activity bar */
+.vscode-xp .activity-bar {
+  background: #2d2d2d;
+  width: 48px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 0;
+  gap: 2px;
+  border-right: 1px solid #1e1e1e;
+  flex-shrink: 0;
+}
+
+.vscode-xp .activity-bar .icon {
+  color: #8b8b8b;
+  font-size: 18px;
+  padding: 7px 0;
+  width: 48px;
+  text-align: center;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  transition: 0.12s;
+}
+
+.vscode-xp .activity-bar .icon.active {
+  color: white;
+  border-left: 2px solid #007acc;
+  background: #373737;
+}
+.vscode-xp .activity-bar .icon:hover { color: #d4d4d4; }
+
+.vscode-xp .activity-bar .bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* sidebar */
+.vscode-xp .sidebar {
+  background: #252526;
+  width: 220px;
+  flex-shrink: 0;
+  border-right: 1px solid #1e1e1e;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.vscode-xp .sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 6px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #b5b5b5;
+  text-transform: uppercase;
+}
+
+.vscode-xp .explorer-tree {
+  padding: 4px 8px 0;
+  overflow-y: auto;
+  flex: 1;
+  font-size: 12px;
+}
+
+.vscode-xp .explorer-tree .folder {
+  color: #d4d4d4;
+  padding: 3px 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.vscode-xp .explorer-tree .folder i { color: #e8a866; width: 16px; font-size: 12px; }
+.vscode-xp .explorer-tree .folder .chevron { font-size: 9px; color: #8b8b8b; width: 12px; }
+
+.vscode-xp .explorer-tree .file {
+  padding: 3px 0 3px 22px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #b5b5b5;
+  cursor: pointer;
+  border-left: 2px solid transparent;
+  white-space: nowrap;
+}
+
+.vscode-xp .explorer-tree .file.active {
+  background: #2a2d2e;
+  color: white;
+  border-left: 2px solid #007acc;
+}
+.vscode-xp .explorer-tree .file:hover { background: #2a2d2e; color: #ddd; }
+.vscode-xp .explorer-tree .file i { color: #c8c8c8; font-size: 12px; width: 16px; }
+.vscode-xp .explorer-tree .file .lang { color: #569cd6; }
+
+.vscode-xp .sidebar-footer {
+  padding: 6px 10px;
+  border-top: 1px solid #2d2d2d;
+  font-size: 10px;
+  color: #6b6b6b;
+  display: flex;
+  gap: 10px;
+}
+
+/* editor area */
+.vscode-xp .editor-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #1e1e1e;
+  min-width: 0;
+}
+
+.vscode-xp .tabs-bar {
+  background: #2d2d2d;
+  display: flex;
+  align-items: center;
+  height: 34px;
+  border-bottom: 1px solid #1e1e1e;
+  flex-shrink: 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.vscode-xp .tab {
+  background: #2d2d2d;
+  color: #969696;
+  padding: 0 12px 0 10px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-right: 1px solid #1e1e1e;
+  cursor: pointer;
+  white-space: nowrap;
+  height: 100%;
+  border-top: 1px solid transparent;
+}
+
+.vscode-xp .tab.active {
+  background: #1e1e1e;
+  color: white;
+  border-top: 1px solid #007acc;
+}
+.vscode-xp .tab i { font-size: 12px; color: #858585; }
+.vscode-xp .tab.active i { color: #569cd6; }
+.vscode-xp .tab .close { font-size: 14px; color: #6b6b6b; margin-left: 6px; }
+.vscode-xp .tab .close:hover { color: #d4d4d4; }
+
+.vscode-xp .code-editor {
+  flex: 1;
+  padding: 16px 12px;
+  background: #1e1e1e;
+  overflow: auto;
+  font-family: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', Consolas, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  white-space: pre;
+  color: #d4d4d4;
+  tab-size: 2;
+}
+
+.vscode-xp .code-editor .line-number {
+  color: #5a5a5a;
+  user-select: none;
+  display: inline-block;
+  width: 26px;
+  text-align: right;
+  margin-right: 16px;
+  font-size: 12px;
+}
+
+.vscode-xp .code-editor .keyword { color: #569cd6; }
+.vscode-xp .code-editor .string { color: #ce9178; }
+.vscode-xp .code-editor .comment { color: #6a9955; }
+.vscode-xp .code-editor .function { color: #dcdcaa; }
+.vscode-xp .code-editor .variable { color: #9cdcfe; }
+.vscode-xp .code-editor .number { color: #b5cea8; }
+.vscode-xp .code-editor .highlight { background: #264f78; padding: 0 1px; }
+
+/* status bar */
+.vscode-xp .status-bar {
+  background: #007acc;
+  color: white;
+  padding: 3px 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  flex-shrink: 0;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px 10px;
+}
+
+.vscode-xp .status-bar .left,
+.vscode-xp .status-bar .right {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.vscode-xp .status-bar .badge {
+  background: rgba(0,0,0,0.25);
+  padding: 1px 7px;
+  border-radius: 10px;
+  font-size: 10px;
+}
+
+/* scroll */
+.vscode-xp ::-webkit-scrollbar { width: 10px; height: 10px; }
+.vscode-xp ::-webkit-scrollbar-track { background: #1e1e1e; }
+.vscode-xp ::-webkit-scrollbar-thumb { background: #424242; border-radius: 6px; }
+.vscode-xp ::-webkit-scrollbar-thumb:hover { background: #4f4f4f; }
+
+/* NEW — header actions + editable editor + gutter */
+.vscode-xp .vscode-actions { display: flex; gap: 4px; align-items: center; }
+.vscode-xp .vscode-icon-btn {
+  background: transparent; border: none; color: #8b8b8b; cursor: pointer;
+  width: 22px; height: 22px; display: flex; align-items: center; justify-content: center;
+  border-radius: 4px; font-size: 12px;
+}
+.vscode-xp .vscode-icon-btn:hover { background: #2a2d2e; color: #fff; }
+.vscode-xp .explorer-tree .folder.selected { background: #37373d; color: #fff; }
+.vscode-xp .explorer-tree .file.selected { background: #2a2d2e; }
+.vscode-xp .explorer-tree .file.open { border-left-color: transparent; }
+.vscode-xp .explorer-tree .file.open.active { border-left-color: #007acc; }
+
+.vscode-xp .xp-vscode-btn {
+  background: #3a3d41; color: #cccccc; border: 1px solid #3c3c3c;
+  padding: 4px 10px; border-radius: 2px; font-size: 11px; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.vscode-xp .xp-vscode-btn:hover { background: #45494e; color: white; }
+.vscode-xp .xp-vscode-btn.primary { background: #0e639c; border-color: #007acc; color: white; }
+.vscode-xp .xp-vscode-btn.primary:hover { background: #1177bb; }
+
+.vscode-xp .code-editor-wrap {
+  flex: 1; display: flex; overflow: hidden; min-height: 0;
+  background: #1e1e1e; position: relative;
+}
+
+.vscode-xp .code-gutter {
+  background: #1e1e1e; color: #858585; text-align: right;
+  padding: 10px 8px; font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 12px; line-height: 18px; user-select: none; overflow: hidden;
+  border-right: 1px solid #2d2d2d; min-width: 44px;
+}
+.vscode-xp .code-gutter .gutter-line { height: 18px; }
+
+.vscode-xp .code-textarea {
+  flex: 1; background: #1e1e1e; color: #d4d4d4;
+  border: none; outline: none; resize: none;
+  padding: 10px 12px; font-family: 'Cascadia Code', 'Fira Code', Consolas, monospace;
+  font-size: 13px; line-height: 18px; white-space: pre; overflow-wrap: normal; overflow: auto;
+  tab-size: 2;
+}
+
+.vscode-xp .empty-editor {
+  flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  background: #1e1e1e; color: #8b8b8b; padding: 24px; text-align: center;
+}
+
+/* responsive — collapse sidebar on small XP window */
+@media (max-width: 700px) {
+  .vscode-xp .sidebar { width: 160px; }
+}
+@media (max-width: 520px) {
+  .vscode-xp .sidebar { display: none; }
+  .vscode-xp .activity-bar { width: 40px; }
+  .vscode-xp .activity-bar .icon { font-size: 16px; width: 40px; }
+  .vscode-xp .tabs-bar { height: 32px; }
+}

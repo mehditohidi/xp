@@ -1,0 +1,101 @@
+.xp-error-window {
+  position: fixed;
+  width: 340px;
+  background: #ece9d8;
+  border: 1px solid #0831d9;
+  border-radius: 8px 8px 3px 3px;
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.55);
+  font-family: Tahoma, "MS Sans Serif", Geneva, sans-serif;
+  font-size: 12px;
+  user-select: none;
+  z-index: 99999;
+  animation: xp-error-pop 0.15s ease-out;
+}
+
+@keyframes xp-error-pop {
+  from { transform: scale(0.85); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+.xp-error-titlebar {
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2px 3px 2px 6px;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(180deg, #0058e6 0%, #3a93ff 8%, #0058e6 40%, #0050d8 60%, #003ca6 100%);
+  color: white;
+  font-weight: bold;
+  cursor: grab;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
+}
+.xp-error-titlebar:active { cursor: grabbing; }
+
+.xp-error-title-left {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.xp-error-icon { width: 15px; height: 15px; flex-shrink: 0; }
+
+.xp-error-close {
+  width: 21px; height: 21px;
+  background: linear-gradient(180deg, #f79c9c 0%, #e0403a 45%, #c22a24 55%, #a51914 100%);
+  border: 1px solid #870000;
+  border-radius: 3px;
+  color: white;
+  font-weight: bold;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1;
+}
+.xp-error-close:hover { filter: brightness(1.15); }
+.xp-error-close:active { filter: brightness(0.9); }
+
+.xp-error-body {
+  display: flex;
+  padding: 16px 14px 10px 14px;
+  gap: 12px;
+}
+
+.xp-error-bigicon {
+  flex-shrink: 0;
+  width: 32px; height: 32px;
+}
+
+.xp-error-message {
+  flex: 1;
+  color: #000;
+  line-height: 1.4;
+  padding-top: 2px;
+}
+
+.xp-error-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 6px 14px 14px 14px;
+}
+
+.xp-error-btn {
+  font-family: Tahoma, sans-serif;
+  font-size: 12px;
+  padding: 3px 18px;
+  background: #ece9d8;
+  border: 1px solid #848284;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 0 #fff, inset -1px -1px 0 #a0a0a0;
+  cursor: pointer;
+  min-width: 72px;
+}
+.xp-error-btn:active {
+  box-shadow: inset -1px -1px 0 #fff, inset 1px 1px 0 #a0a0a0;
+}
+.xp-error-btn:focus { outline: 1px dotted #000; outline-offset: -4px; }

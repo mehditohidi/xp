@@ -94,7 +94,7 @@ input[type="text"] {
   position: fixed;
   bottom: 0;
   width: 100%;
-  height: 40px; /* Height similar to the Windows taskbar */
+  height: 40px;
   background: linear-gradient(to right, #0078d4, #1a1a1a);
   color: #ffffff; /* Text color */
   box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2); /* Subtle shadow */
@@ -225,6 +225,17 @@ input[type="text"] {
   background-color: #3399ff75; /* Windows XP blue highlight */
   color: white;
 }
+.program.dragging {
+  opacity: 0.85;
+  z-index: 9999 !important;
+  background: rgba(49,106,197,0.25) !important;
+  border: 1px dotted #316ac5 !important;
+  pointer-events: none;
+}
+.icons {
+  contain: none;
+  overflow: visible;
+}
 
 #programName {
   font-size: 12px;
@@ -273,37 +284,106 @@ input[type="text"] {
   z-index: 1000; /* Ensure it's on top of other elements */
 }
 
+/* ===== Authentic Windows XP Context Menu ===== */
 .context-menu {
   position: absolute;
-  width: 220px;
-  background-color: rgb(238, 238, 238);
-  border: 1px solid #c0c0c0;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 10000; /* Ensure context menu is above other elements */
-  padding: 0;
+  width: 250px;
+  background: #fff;
+  border: 1px solid #aca899;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.35), 0 0 1px rgba(0,0,0,0.2);
+  z-index: 10000;
+  padding: 2px;
   margin: 0;
+  font-family: Tahoma, "MS Sans Serif", sans-serif;
+  user-select: none;
 }
 
 .context-menu ul {
   list-style: none;
-  padding: 5px 0;
+  padding: 0;
   margin: 0;
+  background: #fff;
 }
 
-.context-menu li {
-  padding: 5px 15px;
-  cursor: pointer;
-  font-family: Tahoma, sans-serif;
-  font-size: 14px;
-  color: #000000;
+.context-menu li.xp-menu-item {
+  position: relative;
   display: flex;
   align-items: center;
+  gap: 8px;
+  padding: 4px 20px 4px 32px;
+  cursor: default;
+  font-family: Tahoma, sans-serif;
+  font-size: 11px;
+  line-height: 16px;
+  color: #000;
+  min-height: 21px;
+  white-space: nowrap;
 }
 
-.context-menu li:hover {
-  background-color: #0a246a; /* Windows XP blue hover */
-  color: #ffffff;
+.context-menu li.xp-menu-item .xp-icon {
+  position: absolute;
+  left: 6px;
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
 }
+
+.context-menu li.xp-menu-item .xp-arrow {
+  margin-left: auto;
+  font-size: 8px;
+  color: #000;
+  padding-left: 16px;
+}
+
+.context-menu li.xp-menu-item:hover {
+  background-color: #316ac5;
+  color: #fff;
+}
+.context-menu li.xp-menu-item:hover .xp-arrow { color: #fff; }
+.context-menu li.xp-menu-item:hover .xp-icon { filter: none; }
+
+.context-menu li.xp-menu-item.disabled {
+  color: #aca899;
+  cursor: default;
+}
+.context-menu li.xp-menu-item.disabled:hover {
+  background: transparent;
+  color: #aca899;
+}
+
+.context-menu li.xp-menu-item.bold {
+  font-weight: bold;
+}
+
+.context-menu .xp-separator {
+  height: 1px;
+  margin: 3px 4px 3px 30px;
+  background: #aca899;
+  list-style: none;
+  padding: 0;
+}
+.context-menu .xp-separator hr { display: none; }
+
+/* Submenu */
+.context-menu .xp-submenu {
+  display: none;
+  position: absolute;
+  left: 100%;
+  top: -4px;
+  width: 200px;
+  background: #fff;
+  border: 1px solid #aca899;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+  padding: 2px;
+  z-index: 10001;
+}
+.context-menu li.has-submenu:hover > .xp-submenu {
+  display: block;
+}
+.context-menu .xp-submenu li { padding-left: 32px; }
 #taskImage {
   width: 30px;
   height: 30px;
@@ -552,22 +632,29 @@ input[type="text"] {
 }
 .start-menu {
   position: absolute;
-  bottom: 70px;
+  bottom: 30px;
   left: 1px;
-  width: 300px;
-  height: 500px;
-  background-color: #bfbfbf;
-  border: 1px solid #4a4a4a;
+  width: 400px;
+  height: auto;
+  min-height: 440px;
+  max-height: calc(100vh - 40px);
+  background-color: #ece9d8;
+  border: 1px solid #0a46a3;
+  border-radius: 6px 6px 0 0;
   box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5);
   z-index: 10000;
   display: none;
+  flex-direction: column;
+  overflow: visible !important;
 }
 
 .start-menu-header {
-  background-color: #3a6ea5;
-  padding: 10px;
+  background: linear-gradient(to bottom, #1e90ff, #0055e5);
+  padding: 8px 10px;
   display: flex;
   align-items: center;
+  border-radius: 6px 6px 0 0;
+  flex-shrink: 0;
 }
 
 .user-image {
@@ -576,6 +663,7 @@ input[type="text"] {
   border-radius: 50%;
   margin-right: 10px;
   cursor: pointer;
+  border: 2px solid rgba(255,255,255,0.8);
 }
 
 .username {
@@ -583,17 +671,36 @@ input[type="text"] {
   font-weight: bold;
   font-family: Tahoma, sans-serif;
   font-size: 14px;
+  text-shadow: 1px 1px 1px rgba(0,0,0,0.4);
 }
 
 .start-menu-content {
   display: flex;
-  background-color: #e4e4e4;
-  height: calc(100% - 100px);
+  flex: 1;
+  min-height: 0;
+  overflow: visible !important;
+  align-items: stretch;
 }
 
 .menu-column {
   width: 50%;
-  padding: 10px;
+  padding: 4px 3px;
+  overflow: visible !important;
+  display: flex;
+  flex-direction: column;
+}
+.menu-column ul {
+  overflow: visible !important;
+}
+
+.menu-column-left {
+  background: #fff;
+  border-right: 1px solid #aca899;
+}
+
+.menu-column-right {
+  background: #c9d9f7;
+  background: linear-gradient(to bottom, #d3e7ff 0%, #b8d0f0 100%);
 }
 
 .menu-column ul {
@@ -603,31 +710,186 @@ input[type="text"] {
 }
 
 .menu-column li {
+  position: relative;
   display: flex;
   align-items: center;
-  padding: 5px;
-  margin-bottom: 5px;
+  gap: 6px;
+  padding: 3px 6px;
   cursor: pointer;
-  background-color: #e4e4e4;
   font-family: Tahoma, sans-serif;
-  font-size: 12px;
+  font-size: 11px;
+  line-height: 13px;
+  min-height: 22px;
+  white-space: nowrap;
+}
+
+.menu-column-left li {
+  background: #fff;
+  margin-bottom: 1px;
+}
+
+.menu-column-right li {
+  background: transparent;
+  margin-bottom: 1px;
 }
 
 .menu-column li:hover {
-  background-color: #9bb3e8;
+  background-color: #316ac5 !important;
+  color: #fff;
 }
+
+.menu-column li:hover .xp-arrow { color: #fff; }
 
 .menu-column img {
   width: 20px;
   height: 20px;
-  margin-right: 10px;
+  margin-right: 6px;
+  flex-shrink: 0;
 }
 
-.start-menu-footer {
-  background-color: #3a6ea5;
-  padding: 10px;
+.menu-column .xp-pinned {
+  min-height: 30px;
+  padding: 3px 6px;
+}
+
+.menu-column .xp-pinned b { font-size: 11px; }
+
+.menu-column .xp-separator {
+  height: 1px !important;
+  min-height: 1px !important;
+  margin: 3px 4px !important;
+  padding: 0 !important;
+  background: #aca899;
+  list-style: none;
+  flex-shrink: 0;
+}
+
+/* All Programs bold + green arrow */
+.all-programs-item {
+  font-weight: bold;
+  background: #fff !important;
+  border-top: 1px solid #aca899;
+  margin-top: 6px !important;
+  padding-top: 6px !important;
+}
+.all-programs-item .xp-arrow { color: #0a8a0a; font-weight: bold; }
+
+/* XP submenu for start menu — flyout style */
+.start-menu .xp-submenu {
+  display: none;
+  position: absolute;
+  top: -4px;
+  left: 100%;
+  min-width: 200px;
+  background: #fff;
+  border: 1px solid #aca899;
+  box-shadow: 2px 2px 6px rgba(0,0,0,0.35);
+  padding: 2px;
+  z-index: 10001;
+  list-style: none;
+  overflow: visible !important;
+}
+
+.xp-submenu {
+  z-index: 10002;
+  overflow: visible !important;
+}
+
+.start-menu li.has-submenu > .xp-submenu { top: -4px; }
+
+.start-menu li.has-submenu:hover > .xp-submenu {
+  display: block;
+}
+
+/* second-level (and deeper) flyouts must escape their parent submenu */
+.start-menu .xp-submenu .xp-submenu {
+  left: 100%;
+  top: -6px;
+  z-index: 10003;
+  min-width: 200px;
+}
+.start-menu .xp-submenu li.has-submenu:hover > .xp-submenu {
+  display: block;
+}
+
+/* All Programs menu positioned at bottom of left column, flies right */
+.all-programs-menu {
+  bottom: 0;
+  top: auto !important;
+  left: 100% !important;
+  min-width: 210px;
+  max-height: 480px;
+  overflow: visible;
+}
+
+.start-menu .xp-submenu li {
+  padding: 4px 20px 4px 30px;
+  min-height: 22px;
+  color: #000;
+  background: #fff;
+  margin: 0;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.start-menu .xp-submenu li .xp-icon {
+  position: absolute;
+  left: 6px;
+  width: 16px;
+  height: 16px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+}
+
+.start-menu .xp-submenu li .xp-arrow {
+  margin-left: auto;
+  font-size: 8px;
+  color: #000;
+  padding-left: 16px;
+}
+
+.start-menu .xp-submenu li:hover {
+  background: #316ac5 !important;
+  color: #fff;
+}
+.start-menu .xp-submenu li:hover .xp-arrow { color: #fff; }
+
+.start-menu .xp-submenu li.disabled {
+  color: #aca899;
+  cursor: default;
+}
+.start-menu .xp-submenu li.disabled:hover {
+  background: transparent !important;
+  color: #aca899;
+}
+
+.start-menu .xp-submenu .xp-separator {
+  height: 1px;
+  margin: 3px 4px 3px 28px;
+  background: #aca899;
+  padding: 0;
+}
+
+.menu-column-right .xp-submenu {
+  left: 100%;
+  right: auto;
+  top: -4px;
+}
+
+/* Ensure right column Connect To submenu stays visible */
+.menu-column-right li.has-submenu { overflow: visible; }
+
+.start-menu-footer {
+  background: linear-gradient(to bottom, #3a6ea5, #2a5a95);
+  padding: 6px 10px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-shrink: 0;
+  border-top: 1px solid #1a3a6a;
+  min-height: 32px;
 }
 
 .start-menu-footer button {
@@ -647,12 +909,14 @@ input[type="text"] {
   float: right;
   background: none;
   border: none;
+  height: 40px;
 }
 #shutButton {
   background-color: inherit;
   background: none;
   border: none;
   color: white;
+  height: 40px;
 }
 #offImg {
   margin-right: 10px;
@@ -837,3 +1101,215 @@ input[type="text"] {
   height: 100%;
   width: 100%;
 }
+
+/* ===== Professional XP Polish ===== */
+html, body {
+  font-family: Tahoma, "Segoe UI", sans-serif !important;
+  background-color: #245edb;
+}
+
+.app {
+  background: transparent;
+}
+
+/* Luna taskbar - authentic XP */
+.taskbar {
+  background: linear-gradient(to bottom, #3c81f5 0%, #245edb 20%, #245edb 60%, #1941a5 100%) !important;
+  height: 30px !important;
+  border-top: 1px solid #4a8af5;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.3);
+}
+
+.taskbar-start #startIcon {
+  height: 30px !important;
+  width: 100px !important;
+  object-fit: contain;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.5));
+  border-radius: 0 8px 8px 0;
+}
+
+.taskbar-end {
+  background: linear-gradient(to bottom, #1ea8e7 0%, #0f8bc9 100%);
+  border-left: 1px solid #0a6da0;
+  padding: 0 12px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.taskbar-clock {
+  text-align: right;
+  line-height: 1.1;
+  font-size: 11px !important;
+}
+
+.calendar-popup {
+  position: absolute;
+  bottom: 34px;
+  right: 6px;
+  width: 220px;
+  background: #ece9d8;
+  border: 1px solid #0054e3;
+  box-shadow: 2px 2px 10px rgba(0,0,0,0.4);
+  padding: 10px;
+  z-index: 50000;
+  font-family: Tahoma, sans-serif;
+}
+.cal-header { font-weight: bold; font-size: 12px; text-align: center; margin-bottom: 6px; }
+.cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; font-size: 11px; text-align: center; }
+.cal-dow { font-weight: bold; color: #003c74; }
+.cal-day { padding: 3px; border-radius: 2px; }
+.cal-day.today { background: #316ac5; color: white; }
+
+.volume-control {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.volume-control input[type="range"] { accent-color: #fff; }
+
+.taskbar-open-windows {
+  margin-left: 110px !important;
+  gap: 2px;
+}
+.taskbar-item {
+  background: linear-gradient(to bottom, #3c81f5, #1a4da6) !important;
+  border: 1px solid #0f2a6b !important;
+  border-radius: 3px !important;
+  padding: 2px 8px !important;
+  font-size: 11px !important;
+  box-shadow: 1px 1px 0 rgba(255,255,255,0.3) inset;
+  min-width: 120px;
+  max-width: 160px;
+}
+.taskbar-item:hover { filter: brightness(1.15); }
+
+/* Authentic window chrome fallback */
+.window {
+  border: 1px solid #0054e3 !important;
+  border-radius: 8px 8px 0 0 !important;
+  box-shadow: 6px 10px 24px rgba(0,0,0,0.45) !important;
+  background: #ece9d8 !important;
+}
+.title-bar {
+  background: linear-gradient(to bottom, #1e90ff 0%, #0055e5 50%, #0040b8 100%) !important;
+  height: 30px !important;
+  border-radius: 8px 8px 0 0 !important;
+  font-family: "Trebuchet MS", Tahoma, sans-serif !important;
+  font-weight: bold !important;
+  text-shadow: 1px 1px 0 #001a4d !important;
+  padding: 0 4px 0 6px !important;
+}
+.title { font-size: 12px !important; }
+
+/* Desktop icons - professional grid */
+.sticky-notes {
+  position: fixed;
+  inset: 0;
+  bottom: 30px;
+  pointer-events: none;
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  overflow: visible;
+}
+.sticky-notes > * {
+  pointer-events: auto;
+}
+
+.icons {
+  gap: 16px !important;
+  padding: 8px;
+}
+.program {
+  width: 74px;
+  padding: 4px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+}
+.program:hover {
+  background: rgba(49,106,197,0.2);
+  border: 1px solid rgba(49,106,197,0.4);
+}
+.program.selected {
+  background: #316ac5 !important;
+  border: 1px solid #0f2a6b !important;
+}
+.program.trash-hover {
+  background: rgba(255, 40, 40, 0.28) !important;
+  border: 1px solid rgba(255, 40, 40, 0.75) !important;
+  transform: scale(1.08);
+  box-shadow: 0 0 0 2px rgba(255,40,40,0.35) inset;
+}
+.program.trash-hover #programName { color: #ffd0d0 !important; }
+#programName {
+  font-family: Tahoma, sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* Boot screen */
+.boot-screen {
+  position: fixed;
+  inset: 0;
+  background: #1c5f9b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+  color: white;
+  font-family: Tahoma, sans-serif;
+}
+.boot-logo { font-size: 42px; font-weight: bold; letter-spacing: -1px; margin-bottom: 30px; }
+#bootlogo {
+  width: 300px;
+  height: 300px;
+  margin-bottom: 20px; 
+}
+.boot-logo span { font-weight: normal; }
+.boot-logo sup { font-size: 18px; color: #ff8c00; }
+.boot-bar {
+  width: 220px;
+  height: 14px;
+  border: 1px solid #666;
+  border-radius: 4px;
+  overflow: hidden;
+  background: #222;
+}
+.boot-progress {
+  height: 100%;
+  width: 40%;
+  background: linear-gradient(to bottom, #3c81f5, #1a4da6);
+  animation: bootSlide 1.2s infinite linear;
+  border-radius: 3px;
+}
+@keyframes bootSlide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(350%); }
+}
+.boot-text { margin-top: 18px; font-size: 12px; color: #aaa; letter-spacing: 1px; }
+
+/* XP shadows for menus */
+.start-menu {
+  border: 1px solid #0a46a3 !important;
+  border-radius: 6px 6px 0 0 !important;
+  overflow: hidden;
+}
+.start-menu-header {
+  background: linear-gradient(to bottom, #1e90ff, #0055e5) !important;
+}
+.context-menu {
+  border: 1px solid #aca899 !important;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.3) !important;
+}
+
+/* Scrollbars XP style */
+::-webkit-scrollbar { width: 16px; height: 16px; }
+::-webkit-scrollbar-track { background: #ece9d8; }
+::-webkit-scrollbar-thumb { background: #c0c0c0; border: 1px solid #808080; }
+::-webkit-scrollbar-thumb:hover { background: #a0a0a0; }

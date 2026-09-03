@@ -1,0 +1,317 @@
+.dcn-window {
+  width: 360px;
+  font-family: Tahoma, "Segoe UI", sans-serif;
+  font-size: 11px;
+  background: #ece9d8;
+  border: 1px solid #0831d9;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
+  position: relative;
+  user-select: none;
+  box-sizing: border-box;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+/* Fixed-size XP host window for Dialup — no scrolling, no resizing, draggable via titlebar */
+#windowDialup {
+  overflow: hidden !important;
+  resize: none !important;
+  min-width: 360px !important;
+  min-height: auto !important;
+}
+
+#windowDialup .xp-window-content {
+  overflow: hidden !important;
+}
+
+#windowDialup .xp-ctrl.maximize {
+  display: none !important;
+  pointer-events: none;
+}
+
+.dcn-titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 26px;
+  padding: 2px 3px 2px 6px;
+  background: linear-gradient(180deg, #2a6ee8 0%, #1958d4 4%, #1552d0 8%, #0f47c4 40%, #0c3fb8 60%, #1959d6 88%, #3a7ff0 100%);
+  color: #fff;
+  font-weight: bold;
+  font-size: 12px;
+  border-bottom: 1px solid #0831d9;
+}
+
+.dcn-title {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+.dcn-title-icon {
+  font-size: 13px;
+}
+
+.dcn-title-btns {
+  display: flex;
+  gap: 2px;
+}
+
+.dcn-title-btn {
+  width: 20px;
+  height: 18px;
+  background: linear-gradient(180deg, #4f8cf0, #1a5fd8);
+  border: 1px solid #0a3aa8;
+  border-radius: 2px;
+  color: #fff;
+  font-weight: bold;
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.dcn-title-btn:active {
+  background: linear-gradient(180deg, #1a5fd8, #4f8cf0);
+}
+
+.dcn-close {
+  background: linear-gradient(180deg, #f0918a, #d3352a);
+  border-color: #8a1a12;
+}
+
+.dcn-banner {
+  height: 100px;
+  overflow: hidden;
+  border-bottom: 1px solid #8a8a6a;
+}
+
+.dcn-banner-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.dcn-body {
+  padding: 10px 14px;
+}
+
+.dcn-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.dcn-row label {
+  width: 84px;
+  flex-shrink: 0;
+  text-align: left;
+}
+
+.dcn-input,
+.dcn-select {
+  flex: 1;
+  height: 19px;
+  border: 1px solid #7f9db9;
+  padding: 1px 4px;
+  font-family: Tahoma, sans-serif;
+  font-size: 11px;
+  background: #fff;
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.dcn-input:focus,
+.dcn-select:focus {
+  outline: 1px dotted #000;
+  border-color: #3a6ea5;
+}
+
+.dcn-combo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.dcn-combo-narrow {
+  flex: 1;
+}
+
+.dcn-combo-arrow {
+  position: absolute;
+  right: 3px;
+  pointer-events: none;
+  font-size: 9px;
+  color: #333;
+}
+
+.dcn-combo .dcn-input {
+  padding-right: 16px;
+}
+
+.dcn-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 4px 0 6px 0;
+  cursor: pointer;
+}
+
+.dcn-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0 0 10px 20px;
+}
+
+.dcn-radios label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+}
+
+.dcn-disabled {
+  color: #888;
+  cursor: default;
+}
+
+.dcn-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 6px;
+  padding: 10px 14px 14px;
+  border-top: 1px solid #d4d0c0;
+}
+
+.dcn-btn {
+  min-width: 72px;
+  height: 22px;
+  padding: 0 10px;
+  font-family: Tahoma, sans-serif;
+  font-size: 11px;
+  background: #ece9d8;
+  border: 1px solid #919b9c;
+  border-radius: 3px;
+  box-shadow: inset 0 1px 0 #fff, 1px 1px 1px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.dcn-btn:hover:not(:disabled) {
+  border-color: #3a6ea5;
+  background: #fff2c8;
+}
+
+.dcn-btn:active:not(:disabled) {
+  box-shadow: inset 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.dcn-btn:disabled {
+  color: #a0a0a0;
+  cursor: default;
+}
+
+.dcn-btn-primary {
+  font-weight: bold;
+  border-color: #3a6ea5;
+}
+
+/* --- Dialing / mini modal overlays --- */
+
+.dcn-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.dcn-dialing-modal,
+.dcn-mini-modal {
+  width: 260px;
+  background: #ece9d8;
+  border: 1px solid #0831d9;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.dcn-titlebar-small {
+  height: 22px;
+  font-size: 11px;
+}
+
+.dcn-dialing-body {
+  padding: 16px 12px 10px;
+  text-align: center;
+}
+
+.dcn-dialing-icon {
+  font-size: 30px;
+  position: relative;
+  margin-bottom: 8px;
+}
+
+.dcn-dialing-wave {
+  position: absolute;
+  left: 100%;
+  top: 45%;
+  width: 14px;
+  height: 14px;
+  margin-left: 2px;
+  border: 2px solid #2a6ee8;
+  border-radius: 50%;
+  opacity: 0;
+  animation: dcnPulse 1.2s infinite;
+}
+
+@keyframes dcnPulse {
+  0% { opacity: 0.9; transform: scale(0.4); }
+  80% { opacity: 0; transform: scale(1.6); }
+  100% { opacity: 0; transform: scale(1.6); }
+}
+
+.dcn-dialing-status {
+  font-size: 11px;
+  margin-bottom: 10px;
+  min-height: 14px;
+}
+
+.dcn-dialing-progress {
+  display: flex;
+  justify-content: center;
+  gap: 5px;
+}
+
+.dcn-dialing-progress span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #2a6ee8;
+  animation: dcnBlink 1.4s infinite ease-in-out;
+}
+
+.dcn-dialing-progress span:nth-child(2) { animation-delay: 0.2s; }
+.dcn-dialing-progress span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes dcnBlink {
+  0%, 80%, 100% { opacity: 0.2; }
+  40% { opacity: 1; }
+}
+
+.dcn-mini-body {
+  padding: 14px 12px;
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.dcn-dialing-actions {
+  display: flex;
+  justify-content: center;
+  padding: 0 12px 12px;
+}

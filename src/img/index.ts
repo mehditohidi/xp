@@ -24,6 +24,20 @@ import searchUrl from './search.svg';
 import chrome from './chrome.png';
 import notepadImg from './notepad.png';
 import game from './game.png';
+import paint from './paint.webp';
+import minesweeper from './minesweeper.png';
+import tictactoe from './tictactoe.png';
+import taskmanager from './taskmanager.png';
+import snake from './snake.avif';
+import calculator from './calculator.png';
+import dialup from './dialup.png';
+import linkedin from './linkedin.webp';
+import bootLogo from './windowsxp.png';
+import vscodeIcon from './vscode.png';
+import gtaViceCity from './gta.png';
+import virusIcon from './virus.svg';
+import gtaSplash from './gtasplash.png';
+
 export {
     game,
     notepadImg,
@@ -50,5 +64,18 @@ export {
     instagram,
     telegram,
     mediaPlayer,
-    off
+    off,
+    minesweeper,
+    tictactoe,
+    taskmanager,
+    snake,
+    paint,
+    calculator,
+    dialup,
+    linkedin,
+    bootLogo,
+    vscodeIcon,
+    gtaViceCity,
+    virusIcon,
+    gtaSplash
 }

@@ -1,0 +1,119 @@
+.xp-window {
+  position: absolute;
+  background: #ece9d8;
+  border: 1px solid #0054e3;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 4px 8px 20px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.4) inset;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  min-width: 250px;
+  min-height: 150px;
+}
+
+.xp-window.maximized {
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  width: 100vw !important;
+  height: calc(100vh - 30px) !important;
+  border-radius: 0;
+}
+
+.xp-titlebar {
+  height: 30px;
+  background: linear-gradient(to bottom, #1e90ff 0%, #0055e5 50%, #0055e5 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px 0 6px;
+  cursor: move;
+  user-select: none;
+  border-radius: 8px 8px 0 0;
+  border-bottom: 1px solid #003c74;
+}
+
+.xp-window.maximized .xp-titlebar { border-radius: 0; }
+
+.xp-title-left {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: white;
+  font-family: "Trebuchet MS", Tahoma, sans-serif;
+  font-weight: bold;
+  font-size: 12px;
+  text-shadow: 1px 1px 0 #001a4d;
+  overflow: hidden;
+}
+
+.xp-title-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.xp-title-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.xp-title-controls {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.xp-ctrl {
+  width: 22px;
+  height: 22px;
+  border: 1px solid white;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 0 rgba(255,255,255,0.3) inset;
+}
+
+.xp-ctrl.minimize {
+  background: linear-gradient(to bottom, #7ba9ff, #1a5dff);
+  color: white;
+}
+.xp-ctrl.maximize {
+  background: linear-gradient(to bottom, #7ba9ff, #1a5dff);
+  color: white;
+}
+.xp-ctrl.close {
+  background: linear-gradient(to bottom, #ff7a7a, #e81123);
+  color: white;
+}
+.xp-ctrl:hover { filter: brightness(1.2); }
+.xp-ctrl:active { filter: brightness(0.9); }
+
+.xp-window-content {
+  flex: 1;
+  overflow: auto;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+.xp-window:fullscreen,
+.xp-window:-webkit-full-screen {
+  width: 100vw !important;
+  height: 100vh !important;
+  top: 0 !important;
+  left: 0 !important;
+  transform: none !important;
+  border-radius: 0;
+  max-width: none;
+  max-height: none;
+}
+
+.xp-window:fullscreen .xp-window-content,
+.xp-window:-webkit-full-screen .xp-window-content {
+  height: calc(100vh - 30px);
+}

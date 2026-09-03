@@ -1,0 +1,10 @@
+.snake-wrap{height:100%;background:#000;display:flex;flex-direction:column;align-items:center;padding:8px;font-family:Tahoma,sans-serif;box-sizing:border-box}
+.snake-hud{color:#0f0;font-size:11px;display:flex;gap:12px;align-items:center;margin-bottom:6px}
+.snake-hud button{padding:2px 8px;background:#ece9d8;border:1px solid #003c74;border-radius:3px;cursor:pointer;font-size:11px}
+.snake-board{display:grid;gap:1px;background:#222;border:2px inset #808080;padding:2px}
+.snake-cell{width:14px;height:14px;background:#111}
+.snake-cell.snake{background:#0f0}
+.snake-cell.head{background:#7fff7f}
+.snake-cell.food{background:#f00;border-radius:50%}
+.snake-ctrl{margin-top:8px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.snake-ctrl button{width:36px;height:22px;background:#ece9d8;border:1px solid #003c74;border-radius:3px;cursor:pointer}

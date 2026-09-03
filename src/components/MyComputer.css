@@ -1,0 +1,11 @@
+.mc-wrap{background:#fff;height:100%;font-family:Tahoma,sans-serif;padding:10px;box-sizing:border-box;overflow:auto}
+.mc-section{font-weight:bold;font-size:11px;color:#003c74;border-bottom:1px solid #aca899;padding:4px 0;margin:8px 0 6px}
+.mc-grid{display:flex;gap:16px;flex-wrap:wrap}
+.mc-drive{display:flex;align-items:center;gap:10px;min-width:220px;padding:6px;border:1px solid transparent;cursor:pointer}
+.mc-drive:hover{background:#e8f0ff;border:1px solid #316ac5}
+.mc-drive img{width:32px;height:32px}
+.mc-label{font-size:11px;font-weight:bold}
+.mc-bar{width:120px;height:10px;border:1px solid #aca899;background:#fff;margin:2px 0}
+.mc-fill{height:100%;background:#316ac5}
+.mc-free{font-size:10px;color:#666}
+.mc-footer{margin-top:12px;font-size:10px;color:#666;border-top:1px solid #ece9d8;padding-top:6px}

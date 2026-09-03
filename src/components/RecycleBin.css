@@ -1,0 +1,13 @@
+.rb-wrap{height:100%;background:#fff;font-family:Tahoma,sans-serif;display:flex;flex-direction:column}
+.rb-toolbar{display:flex;gap:6px;padding:6px;background:#ece9d8;border-bottom:1px solid #aca899}
+.rb-toolbar button{padding:3px 8px;font-size:11px;border:1px solid #003c74;background:#ece9d8;border-radius:3px;cursor:pointer}
+.rb-toolbar button:disabled{opacity:0.5;cursor:default}
+.rb-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#666;gap:6px}
+.rb-empty img{width:48px;opacity:0.6}
+.rb-empty p{font-weight:bold}
+.rb-empty span{font-size:11px}
+.rb-list{padding:8px;overflow:auto}
+.rb-item{display:flex;align-items:center;gap:8px;padding:6px;border-bottom:1px solid #eee}
+.rb-item img{width:22px}
+.rb-name{flex:1;font-size:11px}
+.rb-item button{font-size:11px;padding:2px 8px;border:1px solid #003c74;background:#ece9d8;border-radius:3px;cursor:pointer}

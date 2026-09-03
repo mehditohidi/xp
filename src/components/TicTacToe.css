@@ -1,0 +1,7 @@
+.ttt-wrap{background:#ece9d8;height:100%;display:flex;flex-direction:column;align-items:center;padding:12px;font-family:Tahoma,sans-serif;box-sizing:border-box}
+.ttt-status{font-weight:bold;font-size:13px;margin-bottom:10px;color:#003c74}
+.ttt-grid{display:grid;grid-template-columns:repeat(3,70px);gap:4px;background:#aca899;padding:4px;border:2px inset #fff}
+.ttt-cell{width:70px;height:70px;font-size:28px;font-weight:bold;background:#fff;border:2px outset #fff;cursor:pointer}
+.ttt-cell.win{background:#316ac5;color:#fff}
+.ttt-cell:active{border:2px inset #fff}
+.ttt-reset{margin-top:12px;padding:5px 16px;border:1px solid #003c74;background:#ece9d8;border-radius:3px;cursor:pointer;font-family:Tahoma;font-size:12px}
