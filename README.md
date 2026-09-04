@@ -1,6 +1,6 @@
 # Typescript Windows XP
 
-Demo: https://xp.mehditohidi.com
+Demo: https://xp.mehditohidi.ir
 
 ![Alt text](public/demo.png)
 
